@@ -29,7 +29,8 @@ public class StudentRepositoryTest {
 		studentRepository.save(student);
 	}
 	
-	@Test
+
+
 	public void saveStudentWithGuardian() {
 		Guardian guardian=Guardian.builder()
 							.name("Charndra Shekhar")
@@ -51,6 +52,32 @@ public class StudentRepositoryTest {
 		List<Student> listOfStudent=studentRepository.findAll();
 		System.out.println("list of students :"+ listOfStudent);
 		
+	}
+	
+	@Test
+	public void printStudentByFirstName() {
+		List<Student> listOfStudent=studentRepository.findByFirstName("Arvind");
+		System.out.println("list of students by firstName as Arvind:"+ listOfStudent);
+	}
+	
+
+	@Test
+	public void printStudentByFirstNameContaining() {
+		List<Student> listOfStudent=studentRepository.findByFirstNameContaining("vin");
+		System.out.println("list of students by firstName Containing vin:"+ listOfStudent);
+	}
+	
+
+	@Test
+	public void printStudentByLastNameNotNull() {
+		List<Student> listOfStudent=studentRepository.findByLastNameNotNull();
+		System.out.println("list of students Last name not null"+ listOfStudent);
+	}
+	
+	@Test
+	public void printStudentByGuardianName() {
+		List<Student> listOfStudent=studentRepository.findByGuardianName("Chandra Shekhar");
+		System.out.println("list of students by guardian name as Chandra Shekhar"+ listOfStudent);
 	}
 
 }
