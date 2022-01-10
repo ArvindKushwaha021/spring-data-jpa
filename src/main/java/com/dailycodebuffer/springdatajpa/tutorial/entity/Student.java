@@ -1,6 +1,7 @@
 package com.dailycodebuffer.springdatajpa.tutorial.entity;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,16 +9,14 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
-//@Data
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder(toBuilder=true)
@@ -46,11 +45,6 @@ public class Student {
 			name = "email_id",
 			nullable=false)
 	private String emailId;
-	@Column(name = "guardian_name")
-	private String guardianName;
-	@Column(name = "guradian_email")
-	private String guardianEmail;
-	@Column(name = "guardian_mobile")
-	private String guardianMobile;
-
+	@Embedded
+	private Guardian guardian;
 }
