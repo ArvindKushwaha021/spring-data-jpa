@@ -40,14 +40,6 @@ public class Teacher {
 	private String firstName;
 	@Column(name="last_name")
 	private String lastName;
-	
-	@OneToMany(
-			cascade=CascadeType.ALL
-			)
-	@JoinColumn(
-			name="teacher_id",
-			referencedColumnName="teacher_id"
-			)
-	List<Course> courses;
+
 
 }

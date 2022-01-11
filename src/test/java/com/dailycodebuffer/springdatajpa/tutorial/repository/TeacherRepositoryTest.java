@@ -17,7 +17,7 @@ public class TeacherRepositoryTest {
 	TeacherRepository repository;
 	
 	@Test
-	public void saveTeacher() {
+	public void saveTeacherOneToMany() {
 		
 		Course course1=Course.builder()
 							 .credit(7)
@@ -35,8 +35,9 @@ public class TeacherRepositoryTest {
 		Teacher teacher=Teacher.builder()
 							   .firstName("John")
 							   .lastName("Peter")
-							   .courses(courses)
+							  // .courses(courses)
 							   .build();
 		repository.save(teacher);
 	}
-}
+	
+	}

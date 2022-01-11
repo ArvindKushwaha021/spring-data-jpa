@@ -1,10 +1,13 @@
 package com.dailycodebuffer.springdatajpa.tutorial.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -38,4 +41,11 @@ public class Course {
 	
 	@OneToOne(mappedBy="course")// It means It is mapped by course attribut in CourseMaterial class. So JoinColumn is not required here.
 	private CourseMaterial courseMaterial;
+	
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(
+			name="teacher_id",
+			referencedColumnName="teacher_id"
+			)
+	private Teacher teacher;
 }
