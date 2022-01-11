@@ -104,4 +104,16 @@ public class StudentRepositoryTest {
 		Student student=studentRepository.getFirstNameByEmailAddressNativeNamedParam("arvindkushwaha021@gmail.com");
 		System.out.println("first name by email native query Named"+ student);
 	}
+	
+	@Test
+	public void updateFirstNameNative() {
+		studentRepository.updateFirstNameNative("arvindkushwaha021@gmail.com", "Vivek");
+		//System.out.println("first name by email native query Named"+ student);
+	}
+	
+	@Test
+	public void updateFirstName1() {
+		studentRepository.updateFirstName("arvindkushwaha021@gmail.com", "Ashutosh12");
+		//System.out.println("first name by email native query Named"+ student);
+	}
 }

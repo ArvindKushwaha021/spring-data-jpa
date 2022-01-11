@@ -2,7 +2,10 @@ package com.dailycodebuffer.springdatajpa.tutorial.repository;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -36,6 +39,18 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 			value="select * from student s where s.email_id =:email",
 			nativeQuery=true)
 	Student getFirstNameByEmailAddressNativeNamedParam(@Param("email")String emailId);
+	
+	@Query(
+			value="update student s set s.first_name=:name where s.email_id =:email",
+			nativeQuery=true)
+	@Modifying
+	@Transactional
+	int updateFirstNameNative(@Param("email")String emailId, @Param("name") String firstName);
+	
+	@Query("update Student s set s.firstName=?2 where s.emailId=?1")
+	@Modifying
+	@Transactional	
+	int updateFirstName(String name, String email);
 
 
 
