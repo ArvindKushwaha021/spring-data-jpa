@@ -20,4 +20,9 @@ public class CourseRepositoryTest {
 							  .credit(6).build();
 		repository.save(course);
 	}
+	
+	@Test
+	public void printCourse() {
+		System.out.println("Courses: "+ repository.findAll());
+	}
 }

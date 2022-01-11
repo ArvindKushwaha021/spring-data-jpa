@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -34,4 +35,7 @@ public class Course {
 	private Long courseId;
 	private String title;
 	private Integer credit;
+	
+	@OneToOne(mappedBy="course")// It means It is mapped by course attribut in CourseMaterial class. So JoinColumn is not required here.
+	private CourseMaterial courseMaterial;
 }
