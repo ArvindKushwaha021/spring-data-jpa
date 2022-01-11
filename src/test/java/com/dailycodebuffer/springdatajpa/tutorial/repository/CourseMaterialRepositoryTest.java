@@ -22,5 +22,12 @@ public class CourseMaterialRepositoryTest {
 		
 		repository.save(cm);
 	}
+	
+	@Test
+	public void printCourseMaterial() {
+		System.out.println("Course Material :" +repository.findById(2L));
+		
+		
+	}
 
 }
